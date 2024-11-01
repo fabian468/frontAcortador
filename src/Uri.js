@@ -1,1 +1,1 @@
-export const URI = "https://apiacortador.onrender.com/"
+export const URI = import.meta.env.VITE_PORT
