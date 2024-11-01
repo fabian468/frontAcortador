@@ -1,1 +1,1 @@
-export const URI = import.meta.env.VITE_PORT
+export const URI = import.meta.env.VITE_API_URL
