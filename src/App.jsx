@@ -11,7 +11,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/*' element={<MidNavegacion />} />
-
         <Route path='/user/*' element={
           <StateUserCoponent>
             <HomeUser />

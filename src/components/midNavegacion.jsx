@@ -3,6 +3,7 @@ import Login from "./Login"
 import Registro2 from "./Registro2"
 import FormRecortador from "./FormRecortador"
 import { useState } from "react"
+import BeneficiosRegistro from "./BeneficiosRegistro"
 
 
 function MidNavegacion() {
@@ -18,6 +19,7 @@ function MidNavegacion() {
                 <Route path="/" element={<div className={`${menuRegistro ? 'block' : 'hidden'} md:block`}><Registro2 /></div>} />
                 <Route path="/login" element={<div className={`${menuLogin ? 'block' : 'hidden'} md:block`}><Login setMenuLogin={setMenuLogin} /></div>} />
             </Routes>
+            <BeneficiosRegistro />
         </div>
     )
 }

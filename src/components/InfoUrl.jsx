@@ -25,13 +25,20 @@ function InfoUrl() {
 
     const { datosUrlUnitarios } = useInfoUrlUnitaria(id)
 
+    const copiarUrl = () => {
+        const urlAcortada = `${URI}${datosUrlUnitarios.code}${datosUrlUnitarios.passwordUrl ? "?password=" : ""}`;
+        navigator.clipboard.writeText(urlAcortada)
+            .then(() => alert("URL copiada al portapapeles"))
+            .catch(err => console.error("Error al copiar la URL: ", err));
+    };
+
     return (
         <div className="  h-1/2 mt-32 overflow-scroll md:overflow-scroll md:mt-0  md:w-full relative ">
             <Link to={"../"}><p>Volver</p></Link>
             <div className="md:w-2/3 p-5 flex justify-center flex-col gap-5">
                 <div className={estilos}><p><span>Fecha de creación de la url acortada: </span>{datosUrlUnitarios.date}</p></div>
                 <div className={estilos}><p><span>Url original: </span>{datosUrlUnitarios.url}</p></div>
-                <div className={estilos}><p><span>Url acortada: </span>{URI + datosUrlUnitarios.code}</p></div>
+                <div className={estilos}><p onClick={() => copiarUrl()} className="cursor-pointer" ><span >Url acortada: </span>{!datosUrlUnitarios.passwordUrl ? URI + datosUrlUnitarios.code : URI + datosUrlUnitarios.code + "?password=*****"}</p></div>
                 <form onSubmit={handleSubmit} className="flex justify-center flex-col gap-5">
                     <div className={estilos}> {!editar ? <p><span>Fecha de expiracion de la url: </span>{datosUrlUnitarios.expiresAt}</p> : <><p>Editar fecha</p> <input className="text-black ml-3 " onChange={e => setFechaLimite(e.target.value)} type="date" /></>}</div>
                     <div className="flex flex-col md:flex-row justify-between md:gap-0  gap-5">
